@@ -19,6 +19,7 @@ export const ContentWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 `
 
 
@@ -37,4 +38,16 @@ export const FooterWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`
+
+export const ErrorWrapper = styled.div`
+    background-color: red;
+    border: 1px solid #6666;
+    border-radius: 5%;
+    display: flex;
+    jusitify-content: center;
+    align-items: center;
+    margin-bottom: auto;
+    padding: 16px;
+    color: white;
 `

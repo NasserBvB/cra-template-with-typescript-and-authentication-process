@@ -1,17 +1,45 @@
 import { IUser } from "../../../interfaces";
-import { LOADING, SIGN_IN } from "../constants";
+import { ERROR, LOADING, SIGN_IN } from "../constants";
 
 export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any }>, values: IUser) => {
-    dispatch({ type: LOADING, data: { loading: true } })
+    try {
+        dispatch({ type: LOADING, data: { loading: true } })
 
-    const data = await fetch('/utilisateur/login', {
-        method: 'POST',
-        body: JSON.stringify(values)
-    });
-    const response = await data.json();
+        const { status, ok, statusText } = await fetch('/utilisateur/login', {
+            method: 'POST',
+            body: JSON.stringify(values)
+        });
 
-    dispatch({ type: SIGN_IN, data: { isLoggedIn: true, currentUser: values } });
+        if (ok) {
+            dispatch({ type: SIGN_IN, data: { isLoggedIn: true, currentUser: values } });
+        } else {
+            dispatch({
+                type: ERROR, data: {
+                    error: {
+                        code: status,
+                        message: statusText
+                    }
+                }
+            });
+            dispatch({ type: LOADING, data: { loading: false } })
+            return false;
+        }
+
+    } catch (error) {
+        debugger
+        dispatch({
+            type: ERROR,
+            data: {
+                error: {
+                    code: error.errorCode,
+                    message: error.message
+                }
+            }
+        })
+        dispatch({ type: LOADING, data: { loading: false } })
+        return false;
+    }
+
     dispatch({ type: LOADING, data: { loading: false } })
-
     return true;
 }

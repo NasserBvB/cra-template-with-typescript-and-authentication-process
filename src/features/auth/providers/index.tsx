@@ -6,13 +6,14 @@ const initialState: IUserState = {
     loading: false,
     currentUser: null,
     isLoggedIn: false,
+    error: null
 }
 
 let dispatchInitial: any;
 const UserContext = createContext(initialState);
 const DispatchUserContext = createContext<{ dispatch: React.Dispatch<{ type: string, data: any }> }>(dispatchInitial);
 
-const UserProvider = ({ children }) => {
+const UserProvider = ({ children }: { children: any }) => {
     const [userState, dispatch] = useReducer(userReducer, initialState);
 
     return (

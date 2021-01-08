@@ -1,27 +1,24 @@
 import { Field, Form, Formik, FormikHelpers } from 'formik';
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import Loading from '../../../../components/Loading';
 import { IForm } from '../../../../interfaces';
 import { signIn } from "../../actions/index";
-import { useDispatchUser, useUserState } from '../../providers';
+import { useDispatchUser } from '../../providers';
 import { InputWrapper, LoginWrapper } from './styles';
 
 const Login: React.FC<{}> = ({ }) => {
     const history = useHistory();
-    const { loading } = useUserState()
     const { dispatch } = useDispatchUser();
 
-    const handleSubmit = useMemo(() => {
-        return ({ login, password }: IForm, { setSubmitting, }: FormikHelpers<IForm>) => {
-            signIn(dispatch, { password, login })
-            history.push('/')
-
+    const handleSubmit = async ({ login, password }: IForm, { setSubmitting, }: FormikHelpers<IForm>) => {
+        const status = await signIn(dispatch, { password, login })
+        if (status) {
+            history.push('/home')
         }
-    }, []);
+    }
+
 
     return (
-        !loading ?
             <Formik
                 initialValues={{
                     login: '',
@@ -35,19 +32,18 @@ const Login: React.FC<{}> = ({ }) => {
 
                         <InputWrapper>
                             <label htmlFor="login">Login</label>
-                            <Field id="login" name="login" placeholder="Doe" />
+                        <Field id="login" name="login" placeholder="Votre login" />
                         </InputWrapper>
 
                         <InputWrapper>
-                            <label htmlFor="password">Password</label>
-                            <Field id="password" name="password" placeholder="john@acme.com" type="password" />
+                        <label htmlFor="password">Mot de passe</label>
+                        <Field id="password" name="password" placeholder="Votre mot de passe" type="password" />
                         </InputWrapper>
 
-                        <button type="submit">Submit</button>
+                    <button type="submit">Connecter</button>
                     </LoginWrapper>
                 </Form>
-            </Formik>
-            : <Loading />
+        </Formik>
     )
 }
 

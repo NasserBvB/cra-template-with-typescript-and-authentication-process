@@ -17,7 +17,7 @@ export const ContentWrapper = styled.div`
     background-color: blueviolet;
     grid-area: c;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
 `
@@ -44,4 +44,17 @@ export const FooterWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`
+
+export const ErrorWrapper = styled.div`
+    background-color: red;
+    border: 1px solid #6666;
+    border-radius: 5%;
+    box-shadow: orange;
+    display: flex;
+    jusitify-content: center;
+    align-items: center;
+    margin-bottom: auto;
+    padding: 16px;
+    color: white;
 `

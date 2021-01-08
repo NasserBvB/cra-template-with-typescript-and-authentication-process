@@ -1,6 +1,6 @@
-import { useUserState } from "../auth/providers"
+import { useUserState } from "../auth/providers";
 
 export default function Home() {
-    const { currentUser } = useUserState()
-    return <h1>{currentUser?.username}</h1>
+    const { currentUser } = useUserState();
+    return <h1> Hello {currentUser?.login}</h1>
 }
