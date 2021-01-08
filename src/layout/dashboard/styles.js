@@ -11,6 +11,12 @@ export const ContainerWrapper = styled.div`
         "m m h h h h h h h h h h h h"
         "m m c c c c c c c c c c c c"
         "f f f f f f f f f f f f f f";
+    @media screen and (max-width: 600px) {
+        grid-template-areas: 
+        "m m h h h h h h h h h h h h"
+        "c c c c c c c c c c c c c c"
+        "f f f f f f f f f f f f f f";
+    }
 `
 
 export const ContentWrapper = styled.div`

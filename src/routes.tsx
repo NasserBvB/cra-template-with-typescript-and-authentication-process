@@ -7,35 +7,27 @@ import DashboardLayout from "./layout/dashboard";
 import MainLayout from "./layout/main";
 
 export const Routes = () => {
-    return <Authenticated />
-}
-
-const Authenticated = () => {
     const { isLoggedIn } = useUserState();
-
+    const content = (
+        <>
+            <Route path="/">
+                <Redirect to={isLoggedIn ? "/home" : "/login"} />
+            </Route>
+            <Route path="/home">
+                <Home />
+            </Route>
+            <Route path="/login">
+                <Login />
+            </Route>
+        </>
+    )
     return (
         isLoggedIn ?
             <DashboardLayout>
-                <Route path="/">
-                    <Redirect to={isLoggedIn ? "/home" : "/login"} />
-                </Route>
-                <Route path="/home">
-                    <Home />
-                </Route>
-                <Route path="/login">
-                    <Login />
-                </Route>
+                {content}
             </DashboardLayout>
             : <MainLayout>
-                <Route path="/">
-                    <Redirect to={isLoggedIn ? "/home" : "/login"} />
-                </Route>
-                <Route path="/home">
-                    <Home />
-                </Route>
-                <Route path="/login">
-                    <Login />
-                </Route>
+                {content}
             </MainLayout>
     )
 }
