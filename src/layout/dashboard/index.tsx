@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import Loading from "../../components/Loading";
 import { useUserState } from "../../features/auth/providers";
+import Footer from "../Footer";
+import Header from "../Header";
 import { ContainerWrapper, ContentWrapper, ErrorWrapper, FooterWrapper, HeaderWrapper, MenuWrapper } from "./styles";
 
 const DashboardLayout: React.FC<{}> = ({ children }) => {
@@ -17,7 +19,7 @@ const DashboardLayout: React.FC<{}> = ({ children }) => {
         }
     }, [error])
     return <ContainerWrapper>
-        <HeaderWrapper>Header</HeaderWrapper>
+        <HeaderWrapper><Header/></HeaderWrapper>
         <ContentWrapper>
             {!loading ? children : <Loading />}
             <div ref={errorRef} hidden style={{ marginTop: "auto" }}>
@@ -27,7 +29,7 @@ const DashboardLayout: React.FC<{}> = ({ children }) => {
             </div>
         </ContentWrapper>
         <MenuWrapper>Menu</MenuWrapper>
-        <FooterWrapper>Footer</FooterWrapper>
+        <FooterWrapper><Footer/></FooterWrapper>
     </ContainerWrapper>
 }
 
