@@ -38,3 +38,4 @@ export interface ICustomBoxProps {
 export interface IChangePassword { oldPassword: string, newPassword: string, validatePassword: string }
 export interface IForgottenPassword { email: string }
 export interface ICurrentUserDetails { userID: string }
+export interface ISignIn { handleChange: any, label: string, field: string, value: any, type: string }

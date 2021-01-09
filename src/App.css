@@ -5,3 +5,12 @@ body {
 button {
   cursor: pointer;
 }
+
+a {
+  text-decoration-line: none;
+  color: rgb(11, 131, 11); 
+}
+a:focus, a:hover {
+  text-decoration-line: none;
+  color: rgb(4, 82, 4); 
+}

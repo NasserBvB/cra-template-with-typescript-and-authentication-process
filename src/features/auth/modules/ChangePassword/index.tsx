@@ -34,9 +34,9 @@ const ChangePassword = () => {
                         <Form>
                             <CustomBox maxHeight={400}>
                                 <h4 style={{ textAlign: "center" }}>Changer votre mot de passe</h4>
-                                <CustomField field="oldPassword" value={oldPassword} handleChange={handleChange} label="MDP actuel" />
-                                <CustomField field="newPassword" value={newPassword} handleChange={handleChange} label="nouveau mdp" />
-                                <CustomField field="validatePassword" value={validatePassword} handleChange={handleChange} label="confirmer mdp" />
+                                <CustomField type="password" field="oldPassword" value={oldPassword} handleChange={handleChange} label="MDP actuel" />
+                                <CustomField type="password" field="newPassword" value={newPassword} handleChange={handleChange} label="nouveau mdp" />
+                                <CustomField type="password" field="validatePassword" value={validatePassword} handleChange={handleChange} label="confirmer mdp" />
                                 <CustomButton handleSubmit={handleSubmit} label="Valider" />
                                 <Link to="/home">
                                     <CustomButton handleSubmit={handleCancel} label="Annuler" />

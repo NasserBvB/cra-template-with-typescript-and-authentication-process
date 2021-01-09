@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { ISignIn } from "../../interfaces"
 
 const FieldWrapper = styled.div`
 display: grid;
@@ -23,11 +24,11 @@ const InputWrapper = styled.input`
     }
 `
 
-export const CustomField = ({ handleChange, label, field, value }: { handleChange: any, label: string, field: string, value: any }) => {
+export const CustomField = ({ handleChange, label, field, value, type = 'text' }: ISignIn) => {
     return (
         <FieldWrapper>
             <LabelWrapper defaultValue="Nasser" htmlFor={field} >{label}</LabelWrapper>
-            <InputWrapper name={field} value={value} onChange={handleChange} />
+            <InputWrapper name={field} value={value} onChange={handleChange} type={type}/>
         </FieldWrapper>
     )
 }
