@@ -1,10 +1,12 @@
-import { Field, Form, Formik, FormikHelpers } from 'formik';
+import { Form, Formik, FormikHelpers } from 'formik';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { CustomButton } from '../../../../components/CustomButton';
+import { CustomField } from '../../../../components/Field';
 import { IForm } from '../../../../interfaces';
 import { signIn } from "../../actions/index";
 import { useDispatchUser } from '../../providers';
-import { InputWrapper, LoginWrapper } from './styles';
+import { LoginWrapper } from './styles';
 
 const Login: React.FC<{}> = ({ }) => {
     const history = useHistory();
@@ -26,23 +28,20 @@ const Login: React.FC<{}> = ({ }) => {
                 }}
                 onSubmit={handleSubmit}
             >
-                <Form>
+            {
+                ({ handleChange, values: { password, login }, handleSubmit }) => {
+                    return (
+                        <Form>
                     <LoginWrapper>
                         <h3>Se connecter</h3>
-
-                        <InputWrapper>
-                            <label htmlFor="login">Login</label>
-                        <Field id="login" name="login" placeholder="Votre login" />
-                        </InputWrapper>
-
-                        <InputWrapper>
-                        <label htmlFor="password">Mot de passe</label>
-                        <Field id="password" name="password" placeholder="Votre mot de passe" type="password" />
-                        </InputWrapper>
-
-                    <button type="submit">Connecter</button>
+                                <CustomField field="password" value={password} handleChange={handleChange} label="Password" />
+                                <CustomField field="login" value={login} handleChange={handleChange} label="Login" />
+                                <CustomButton handleSubmit={handleSubmit} label="Connecter" />
                     </LoginWrapper>
                 </Form>
+                    )
+                }
+            }
         </Formik>
     )
 }
