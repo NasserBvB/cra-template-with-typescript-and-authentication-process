@@ -15,6 +15,7 @@ const BoxWrapper = styled.div`
     padding: 60px;
     min-height: ${props => props.theme.maxHeight}px;
     max-width: 300px;
+    margin: 20px;
 `
 
 export const CustomBox = ({ children, maxHeight }: ICustomBoxProps) => {

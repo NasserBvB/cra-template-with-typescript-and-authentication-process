@@ -16,7 +16,7 @@ export const ContentWrapper = styled.div`
     background-color: #0000;
     grid-area: c;
     display: flex;
-    justify-content: center;
+    justify-content: stretch;
     align-items: center;
     flex-direction: column;
 `
