@@ -22,3 +22,10 @@ export interface IAction<T> {
 }
 
 export interface IForm extends IUser { }
+
+export interface IRequestFetch {
+    url: string;
+    method: string;
+    token?: string;
+    body: string | null;
+}

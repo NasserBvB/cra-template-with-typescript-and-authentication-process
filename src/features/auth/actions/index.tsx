@@ -1,3 +1,4 @@
+import { request } from "../../../helpers/axios.intercepter";
 import { IUser } from "../../../interfaces";
 import { ERROR, LOADING, SIGN_IN } from "../constants";
 
@@ -10,13 +11,12 @@ export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any 
             }
         });
 
-        const response = await fetch('/utilisateur/login', {
+        const { ok, status, statusText, result } = await request({
+            url: '/utilisateur/login',
             method: 'POST',
             body: JSON.stringify(values),
         });
 
-        const { ok, status, statusText } = response;
-        const result = await response.text();
 
         if (ok) {
             dispatch({
