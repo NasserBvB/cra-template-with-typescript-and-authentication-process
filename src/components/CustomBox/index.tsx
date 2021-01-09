@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { ICustomBoxProps } from "../../interfaces"
 
 const BoxWrapper = styled.div`
     background-color: #6666; 
@@ -12,11 +13,12 @@ const BoxWrapper = styled.div`
     box-shadow: 13px 11px 11px 0px rgba(153,148,153,1);
     border-radius: 0% 15% 0% 15%;
     padding: 60px;
-    min-height: 250px;
+    min-height: ${props => props.theme.maxHeight}px;
+    max-width: 300px;
 `
 
-export const CustomBox = ({ children }: { children: any }) => {
-    return <BoxWrapper>
+export const CustomBox = ({ children, maxHeight }: ICustomBoxProps) => {
+    return <BoxWrapper theme={{ maxHeight }} >
         {children}
     </BoxWrapper>
 }

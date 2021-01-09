@@ -29,3 +29,12 @@ export interface IRequestFetch {
     token?: string;
     body: string | null;
 }
+
+export interface ICustomBoxProps {
+    children: any,
+    maxHeight: number
+}
+
+export interface IChangePassword { oldPassword: string, newPassword: string, validatePassword: string }
+export interface IForgottenPassword { email: string }
+export interface ICurrentUserDetails { userID: string }

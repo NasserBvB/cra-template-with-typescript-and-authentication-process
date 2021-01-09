@@ -21,25 +21,25 @@ const Login: React.FC<{}> = ({ }) => {
 
 
     return (
-            <Formik
-                initialValues={{
-                    login: '',
-                    password: ''
-                }}
-                onSubmit={handleSubmit}
-            >
+        <Formik
+            initialValues={{
+                login: '',
+                password: ''
+            }}
+            onSubmit={handleSubmit}
+        >
             {
                 ({ handleChange, values: { password, login }, handleSubmit }) => {
                     return (
                         <Form>
-                            <CustomBox>
-                        <h3>Se connecter</h3>
-                        <CustomField field="password" value={password} handleChange={handleChange} label="Password" />
-                        <CustomField field="login" value={login} handleChange={handleChange} label="Login" />
+                            <CustomBox maxHeight={300}>
+                                <h3>Se connecter</h3>
+                                <CustomField field="password" value={password} handleChange={handleChange} label="Password" />
+                                <CustomField field="login" value={login} handleChange={handleChange} label="Login" />
                                 <CustomButton handleSubmit={handleSubmit} label="Connecter" />
-                        Mot de passe oublie ?<Link to="/forgotten-password">Recuperer</Link>
+                                Mot de passe oublie ?<Link to="/forgotten-password">Recuperer</Link>
                             </CustomBox>
-                </Form>
+                        </Form>
                     )
                 }
             }
