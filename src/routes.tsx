@@ -1,5 +1,6 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
+import { ForgottenPassword } from "./features/auth/modules/ForgottenPassword";
 import Login from "./features/auth/modules/SignIn";
 import { useUserState } from "./features/auth/providers";
 import Home from "./features/Home";
@@ -18,6 +19,9 @@ export const Routes = () => {
             </Route>
             <Route path="/login">
                 <Login />
+            </Route>
+            <Route path="/forgotten-password">
+                <ForgottenPassword />
             </Route>
         </>
     )

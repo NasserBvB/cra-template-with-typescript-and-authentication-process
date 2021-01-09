@@ -14,5 +14,5 @@ const ButtonWrapper = styled.button`
 
 
 export const CustomButton = ({ handleSubmit, label }: { handleSubmit: any, label: string }) => {
-    return <ButtonWrapper onSubmit={handleSubmit}>{label}</ButtonWrapper>
+    return <ButtonWrapper onSubmit={handleSubmit} type="submit">{label}</ButtonWrapper>
 }

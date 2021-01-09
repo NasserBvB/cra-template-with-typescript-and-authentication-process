@@ -1,12 +1,12 @@
 import { Form, Formik, FormikHelpers } from 'formik';
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { CustomBox } from '../../../../components/CustomBox';
 import { CustomButton } from '../../../../components/CustomButton';
 import { CustomField } from '../../../../components/Field';
 import { IForm } from '../../../../interfaces';
 import { signIn } from "../../actions/index";
 import { useDispatchUser } from '../../providers';
-import { LoginWrapper } from './styles';
 
 const Login: React.FC<{}> = ({ }) => {
     const history = useHistory();
@@ -32,12 +32,13 @@ const Login: React.FC<{}> = ({ }) => {
                 ({ handleChange, values: { password, login }, handleSubmit }) => {
                     return (
                         <Form>
-                    <LoginWrapper>
+                            <CustomBox>
                         <h3>Se connecter</h3>
-                                <CustomField field="password" value={password} handleChange={handleChange} label="Password" />
-                                <CustomField field="login" value={login} handleChange={handleChange} label="Login" />
+                        <CustomField field="password" value={password} handleChange={handleChange} label="Password" />
+                        <CustomField field="login" value={login} handleChange={handleChange} label="Login" />
                                 <CustomButton handleSubmit={handleSubmit} label="Connecter" />
-                    </LoginWrapper>
+                        Mot de passe oublie ?<Link to="/forgotten-password">Recuperer</Link>
+                            </CustomBox>
                 </Form>
                     )
                 }
