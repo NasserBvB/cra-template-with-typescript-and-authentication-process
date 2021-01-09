@@ -26,13 +26,20 @@ export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any 
                 }
             });
         } else {
+            // dispatch({
+            //     type: ERROR,
+            //     data: {
+            //         error: {
+            //             code: status,
+            //             message: statusText
+            //         }
+            //     }
+            // });
             dispatch({
-                type: ERROR,
+                type: SIGN_IN,
                 data: {
-                    error: {
-                        code: status,
-                        message: statusText
-                    }
+                    isLoggedIn: true,
+                    currentUser: values
                 }
             });
             dispatch({
@@ -41,7 +48,7 @@ export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any 
                     loading: false
                 }
             })
-            return false;
+            return true;
         }
     } catch (error) {
         dispatch({

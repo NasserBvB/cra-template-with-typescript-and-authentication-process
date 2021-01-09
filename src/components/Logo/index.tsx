@@ -7,6 +7,7 @@ const Wrapper = styled.div`
     grid-template-rows: auto;
     max-width: 110px;
     align-items: center;
+    cursor: pointer;
 `
 const ImageWrapper = styled.img`
     border-radius: 50%;

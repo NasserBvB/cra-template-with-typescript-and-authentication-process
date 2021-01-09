@@ -7,8 +7,8 @@ export const ContainerWrapper = styled.div`
     min-height: 100vh;
     grid-gap: 6px;
     grid-template-areas: 
-        "m m h h h h h h h h h h h h"
-        "m m c c c c c c c c c c c c"
+        "m h h h h h h h h h h h h h"
+        "m c c c c c c c c c c c c c"
         "f f f f f f f f f f f f f f";
     @media screen and (max-width: 600px) {
         grid-template-areas: 
@@ -41,6 +41,8 @@ export const MenuWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center; 
+    max-width: 110px;
+    min-width: 40px;
     @media screen and (max-width: 600px) {
         cursor: pointer;
         border-radius: 5%;
