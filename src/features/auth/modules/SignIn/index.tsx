@@ -37,7 +37,7 @@ const Login: React.FC<{}> = ({ }) => {
                                 <CustomField field="login" value={login} handleChange={handleChange} label="Login" type="text" />
                                 <CustomField field="password" value={password} handleChange={handleChange} label="Password" type="password" />
                                 <CustomButton handleSubmit={handleSubmit} label="Connecter" />
-                                Mot de passe oublie ?<Link to="/forgotten-password">Recuperer</Link>
+                                <p>Mot de passe oublie ? <Link to="/forgotten-password">Recuperer</Link></p>
                             </CustomBox>
                         </Form>
                     )

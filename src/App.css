@@ -14,3 +14,7 @@ a:focus, a:hover {
   text-decoration-line: none;
   color: rgb(4, 82, 4); 
 }
+
+p {
+  font-size: 11.2px;
+}
