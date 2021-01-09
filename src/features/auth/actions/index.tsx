@@ -3,30 +3,48 @@ import { ERROR, LOADING, SIGN_IN } from "../constants";
 
 export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any }>, values: IUser) => {
     try {
-        dispatch({ type: LOADING, data: { loading: true } })
-
-        const { status, ok, statusText } = await fetch('/utilisateur/login', {
-            method: 'POST',
-            body: JSON.stringify(values)
+        dispatch({
+            type: LOADING,
+            data: {
+                loading: true
+            }
         });
 
+        const response = await fetch('/utilisateur/login', {
+            method: 'POST',
+            body: JSON.stringify(values),
+        });
+
+        const { ok, status, statusText } = response;
+        const result = await response.text();
+
         if (ok) {
-            dispatch({ type: SIGN_IN, data: { isLoggedIn: true, currentUser: values } });
+            dispatch({
+                type: SIGN_IN,
+                data: {
+                    isLoggedIn: true,
+                    currentUser: values
+                }
+            });
         } else {
             dispatch({
-                type: ERROR, data: {
+                type: ERROR,
+                data: {
                     error: {
                         code: status,
                         message: statusText
                     }
                 }
             });
-            dispatch({ type: LOADING, data: { loading: false } })
+            dispatch({
+                type: LOADING,
+                data: {
+                    loading: false
+                }
+            })
             return false;
         }
-
     } catch (error) {
-        debugger
         dispatch({
             type: ERROR,
             data: {
@@ -36,10 +54,22 @@ export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any 
                 }
             }
         })
-        dispatch({ type: LOADING, data: { loading: false } })
+        dispatch({
+            type: LOADING,
+            data: {
+                loading: false
+            }
+        })
+
         return false;
     }
 
-    dispatch({ type: LOADING, data: { loading: false } })
+    dispatch({
+        type: LOADING,
+        data: {
+            loading: false
+        }
+    })
+
     return true;
 }

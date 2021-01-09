@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const ContainerWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -22,10 +21,8 @@ export const ContentWrapper = styled.div`
     flex-direction: column;
 `
 
-
-
 export const HeaderWrapper = styled.div`
-    background-color: aqua;
+    background-color: #c3bebe;
     grid-area: h;
     display: flex;
     justify-content: center;
@@ -33,7 +30,7 @@ export const HeaderWrapper = styled.div`
 `
 
 export const FooterWrapper = styled.div`
-    background-color: coral;
+    background-color: #f2eded;
     grid-area: f;
     display: flex;
     justify-content: center;
