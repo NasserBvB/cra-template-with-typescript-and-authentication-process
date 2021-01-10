@@ -1,5 +1,5 @@
 
-export interface IUser {
+export interface ICredentials {
     login: string;
     password: string;
 }
@@ -7,6 +7,32 @@ export interface IUser {
 export interface IError {
     code: number;
     message: string;
+}
+
+export interface IPrevilege {
+    id: number;
+    name: string;
+}
+
+export interface IProfil {
+    id: number;
+    name: string;
+    previleges: Array<IPrevilege>;
+}
+
+export interface IUser {
+    id: number;
+    utilisateurId: string;
+    nom: string;
+    prenom: string;
+    login: string;
+    email: string;
+    password: string;
+    profil: IProfil;
+    datecreation: string;
+    tel: string;
+    encryptedPassword: string;
+    emailverificationStatus: boolean;
 }
 
 export interface IUserState {
@@ -21,13 +47,13 @@ export interface IAction<T> {
     data: T;
 }
 
-export interface IForm extends IUser { }
+export interface IForm extends ICredentials { }
 
 export interface IRequestFetch {
     url: string;
     method: string;
     token?: string;
-    body: string | null;
+    body: any;
 }
 
 export interface ICustomBoxProps {
@@ -35,7 +61,24 @@ export interface ICustomBoxProps {
     maxHeight: number
 }
 
-export interface IChangePassword { oldPassword: string, newPassword: string, validatePassword: string }
-export interface IForgottenPassword { email: string }
-export interface ICurrentUserDetails { userID: string }
-export interface ISignIn { handleChange: any, label: string, field: string, value: any, type: string }
+export interface IChangePassword {
+    oldPassword: string,
+    newPassword: string,
+    validatePassword: string
+}
+
+export interface IForgottenPassword {
+    email: string
+}
+
+export interface ICurrentUserDetails {
+    userID: string
+}
+
+export interface ISignIn {
+    handleChange: any,
+    label: string,
+    field: string,
+    value: any,
+    type: string
+}

@@ -1,8 +1,8 @@
 import { request } from "../../../helpers/axios.intercepter";
-import { IChangePassword, ICurrentUserDetails, IForgottenPassword, IUser } from "../../../interfaces";
+import { IChangePassword, ICredentials, ICurrentUserDetails, IForgottenPassword } from "../../../interfaces";
 import { ERROR, LOADING, SIGN_IN } from "../constants";
 
-export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any }>, values: IUser) => {
+export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any }>, values: ICredentials) => {
     try {
         dispatch({
             type: LOADING,
@@ -22,33 +22,33 @@ export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any 
                 type: SIGN_IN,
                 data: {
                     isLoggedIn: true,
-                    currentUser: values
+                    currentUser: result
                 }
             });
         } else {
-            // dispatch({
-            //     type: ERROR,
-            //     data: {
-            //         error: {
-            //             code: status,
-            //             message: statusText
-            //         }
-            //     }
-            // });
             dispatch({
-                type: SIGN_IN,
+                type: ERROR,
                 data: {
-                    isLoggedIn: true,
-                    currentUser: values
+                    error: {
+                        code: status,
+                        message: statusText
+                    }
                 }
             });
+            // dispatch({
+            //     type: SIGN_IN,
+            //     data: {
+            //         isLoggedIn: true,
+            //         currentUser: values
+            //     }
+            // });
             dispatch({
                 type: LOADING,
                 data: {
                     loading: false
                 }
             })
-            return true;
+            return false;
         }
     } catch (error) {
         dispatch({
@@ -100,7 +100,7 @@ export const getCurrentUserDetails = async (dispatch: React.Dispatch<{ type: str
                 type: SIGN_IN,
                 data: {
                     isLoggedIn: true,
-                    currentUser: values
+                    currentUser: result
                 }
             });
         } else {
@@ -159,13 +159,12 @@ export const forgottenPassword = async (dispatch: React.Dispatch<{ type: string,
                 loading: true
             }
         });
-
         const { ok, status, statusText, result } = await request({
             url: '/utilisateur/login',
             method: 'POST',
-            body: JSON.stringify(values),
+            body: values
         });
-
+        debugger
         if (ok) {
             dispatch({
                 type: SIGN_IN,

@@ -8,6 +8,7 @@ const Wrapper = styled.div`
     max-width: 110px;
     align-items: center;
     cursor: pointer;
+    padding: 30px;
 `
 const ImageWrapper = styled.img`
     border-radius: 50%;
@@ -20,7 +21,7 @@ export default function Logo({ userName, src }: { userName: string, src: string 
     return (
         <Wrapper>
             <ImageWrapper src="logo192.png" alt={userName} />
-            <h3>{userName}</h3>
+            <p>{userName}</p>
         </Wrapper>
     )
 }

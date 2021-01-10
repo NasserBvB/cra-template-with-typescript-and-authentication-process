@@ -66,6 +66,6 @@ export const ErrorWrapper = styled.div`
     jusitify-content: center;
     align-items: center;
     margin-bottom: auto;
-    padding: 16px;
+    padding: 6px;
     color: white;
 `

@@ -23,7 +23,7 @@ const MainLayout: React.FC<{}> = ({ children }) => {
                 {(!loading ? children : <Loading />)}
                 <div ref={errorRef} hidden style={{ marginBottom: "auto" }}>
                     <ErrorWrapper>
-                        {error && error.message}
+                        <p>{error && error.message}</p>
                     </ErrorWrapper>
                 </div>
             </ContentWrapper>
