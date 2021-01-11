@@ -1,5 +1,5 @@
 import { IAction, IUserState } from "../../../interfaces/index";
-import { ERROR, LOADING, SIGN_IN, SIGN_OUT } from "../constants";
+import { ERROR, LOADING, SIGN_IN, SIGN_OUT, UPDATE_PROFIL } from "../constants";
 
 export function userReducer<T extends IUserState>(state: IUserState, action: IAction<T>) {
     switch (action.type) {
@@ -13,6 +13,12 @@ export function userReducer<T extends IUserState>(state: IUserState, action: IAc
             return {
                 ...state,
                 isLoggedIn: action.data.isLoggedIn,
+                currentUser: action.data.currentUser
+            }
+        case UPDATE_PROFIL:
+            return {
+                ...state,
+                isModified: action.data.isModified,
                 currentUser: action.data.currentUser
             }
         case LOADING:

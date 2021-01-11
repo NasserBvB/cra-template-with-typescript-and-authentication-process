@@ -1,7 +1,11 @@
-POST http://localhost:8083/utilisateur/login
+PUT http://localhost:8083/utilisateur/login
 Content-Type: application/json
+authorization: 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbG9tYXJpMSIsImlkIjoiU2oxZlFKb2twcmtqNjJkZ041Y2p2Vm93QnBFVUpGUjIiLCJwcm9maWwiOiJ7XCJpZFwiOjEsXCJuYW1lXCI6XCJBZG1pbmlzdHJhdGV1clwiLFwicHJpdmlsZWdlc1wiOltdfSIsImV4cCI6MTYxMTIzMjYzM30.EousYOASO06LyKdrdIcg_wsoJHRmvR5TGY6VlURCdjF6KpAuLq05p21b6btSks3oa3lx4_O4HOxU5uPf42P1FQ' 
 
 {
-    "login": "elomari1",
-    "password": "elomari",
+    email: "eelomari1@gmail.com",
+    id: 1,
+    login: "elomari1",
+    nom: "elomari1",
+    prenom: "elomari1r"
 }

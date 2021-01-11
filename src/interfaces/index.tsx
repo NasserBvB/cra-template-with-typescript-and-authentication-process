@@ -40,6 +40,7 @@ export interface IUserState {
     currentUser: IUser | null;
     loading: boolean;
     error: IError | null;
+    isModified: boolean;
 }
 
 export interface IAction<T> {
@@ -52,7 +53,6 @@ export interface IForm extends ICredentials { }
 export interface IRequestFetch {
     url: string;
     method: string;
-    token?: string;
     body: any;
 }
 
@@ -65,6 +65,13 @@ export interface IChangePassword {
     oldPassword: string,
     newPassword: string,
     validatePassword: string
+}
+
+export interface IUpdateProfil {
+    nom: string,
+    prenom: string,
+    login: string,
+    email: string,
 }
 
 export interface IForgottenPassword {

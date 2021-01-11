@@ -17,9 +17,9 @@ const ImageWrapper = styled.img`
     width: 30px;
     padding: 3px;
 `
-export default function Logo({ userName, src }: { userName: string, src: string }) {
+export default function Logo({ userName, src, handleClick }: { userName: string, src: string, handleClick?: any }) {
     return (
-        <Wrapper>
+        <Wrapper onClick={handleClick}>
             <ImageWrapper src="logo192.png" alt={userName} />
             <p>{userName}</p>
         </Wrapper>

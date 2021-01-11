@@ -1,6 +1,6 @@
 import { request } from "../../../helpers/axios.intercepter";
 import { IChangePassword, ICredentials, ICurrentUserDetails, IForgottenPassword } from "../../../interfaces";
-import { ERROR, LOADING, SIGN_IN } from "../constants";
+import { ERROR, LOADING, SIGN_IN, SIGN_OUT } from "../constants";
 
 export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any }>, values: ICredentials) => {
     try {
@@ -90,8 +90,8 @@ export const getCurrentUserDetails = async (dispatch: React.Dispatch<{ type: str
         });
 
         const { ok, status, statusText, result } = await request({
-            url: '/utilisateur/login',
-            method: 'POST',
+            url: '/utilisateur/update',
+            method: 'PUT',
             body: JSON.stringify(values),
         });
 
@@ -262,6 +262,49 @@ export const changePassword = async (dispatch: React.Dispatch<{ type: string, da
             })
             return false;
         }
+    } catch (error) {
+        dispatch({
+            type: ERROR,
+            data: {
+                error: {
+                    code: error.errorCode,
+                    message: error.message
+                }
+            }
+        })
+        dispatch({
+            type: LOADING,
+            data: {
+                loading: false
+            }
+        })
+
+        return false;
+    }
+
+    dispatch({
+        type: LOADING,
+        data: {
+            loading: false
+        }
+    })
+
+    return true;
+}
+
+export const logout = async (dispatch: React.Dispatch<{ type: string, data: any }>) => {
+    try {
+        dispatch({
+            type: SIGN_OUT,
+            data: {
+                isLoggedIn: false,
+                currentUser: null
+            }
+        });
+
+        localStorage.removeItem('token');
+
+
     } catch (error) {
         dispatch({
             type: ERROR,

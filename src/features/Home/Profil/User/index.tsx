@@ -1,10 +1,12 @@
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { CustomButton } from "../../../../components/CustomButton";
 import { CustomField } from "../../../../components/Field";
-import { useUserState } from "../../../auth/providers";
+import { IUpdateProfil } from "../../../../interfaces";
+import { useDispatchUser, useUserState } from "../../../auth/providers";
+import { updateProfil } from "../../actions";
 import ChangePassword from "../ChangePassword";
 
 const HeadUserWrapper = styled.div`
@@ -50,8 +52,15 @@ const ContentFormWrapper = styled.div`
 export default function User() {
     const { currentUser } = useUserState()
     const [modifying, setModifying] = useState(false);
+
+    const { dispatch } = useDispatchUser()
+
     const [modifyingPassword, setModifyingPassword] = useState(false);
-    const handleSubmit = () => { }
+    const handleSubmit = async (values: IUpdateProfil, _formikHelpers: FormikHelpers<IUpdateProfil>) => {
+        const status = await updateProfil(dispatch, values, currentUser?.id);
+        console.log(status);
+
+    }
     const handleCancel = () => { }
 
     const handleClose = (event: React.FormEvent<HTMLButtonElement>) => {
@@ -75,10 +84,10 @@ export default function User() {
         </HeadUserWrapper>
         {<Formik
                     initialValues={{
-                        nom: currentUser?.nom,
-                        prenom: currentUser?.prenom,
-                        email: currentUser?.email,
-                        login: currentUser?.login
+                nom: '' + currentUser?.nom,
+                prenom: '' + currentUser?.prenom,
+                email: '' + currentUser?.email,
+                login: '' + currentUser?.login
                     }}
                     onSubmit={handleSubmit}
                 >
@@ -97,11 +106,12 @@ export default function User() {
                                         <CustomButton handleSubmit={handleSubmit} label="Valider" className="button1" disbaled={false} />
                                         <Link to="/home" className="div1">
                                         </Link>
-                                            </ContentFormWrapper> : <ContentUserWrapper>
+                                            </ContentFormWrapper>
+                                            : <ContentUserWrapper>
                                                 Nom complet : <p> {currentUser?.nom} {currentUser?.prenom} </p>
-                Profile : <p> {currentUser?.profil.name} </p>
-                Nom d'utilisateur : <p>{currentUser?.login}</p>
-                Email : <p>{currentUser?.email}</p>
+                                                Profile : <p> {currentUser?.profil.name} </p>
+                                                Nom d'utilisateur : <p>{currentUser?.login}</p>
+                                                Email : <p>{currentUser?.email}</p>
                                             </ContentUserWrapper>
                                     }
                                 </Form>

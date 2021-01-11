@@ -6,7 +6,8 @@ const initialState: IUserState = {
     loading: false,
     currentUser: null,
     isLoggedIn: false,
-    error: null
+    error: null,
+    isModified: false,
 }
 
 let dispatchInitial: any;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Logo from "../components/Logo";
-import { useUserState } from "../features/auth/providers";
+import { logout } from "../features/auth/actions";
+import { useDispatchUser, useUserState } from "../features/auth/providers";
 
 const Wrapper = styled.header`
     display: grid;
@@ -13,9 +14,15 @@ const Wrapper = styled.header`
 
 
 const Header = () => {
+
     const { currentUser } = useUserState()
-    return <Wrapper>
-        <Logo src="/////" userName={(currentUser && currentUser.nom) || ""} />
+    const { dispatch } = useDispatchUser();
+    const handleClick = async (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        logout(dispatch);
+    }
+
+return <Wrapper>
+    <Logo src="/////" userName={(currentUser && currentUser.nom) || ""} handleClick={handleClick} />
     </Wrapper>
 }
 export default Header;
