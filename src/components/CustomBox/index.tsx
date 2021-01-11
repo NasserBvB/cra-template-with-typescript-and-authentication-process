@@ -11,10 +11,10 @@ const BoxWrapper = styled.div`
     -moz-box-shadow: 13px 11px 11px 0px rgba(153,148,153,1);
     box-shadow: 13px 11px 11px 0px rgba(153,148,153,1);
     border-radius: 0% 15% 0% 15%;
-    padding: 60px;
+    padding: 90px;
     min-height: ${props => props.theme.maxHeight}px;
     max-width: 90%;
-    min-width: 600px;
+    min-width: 500px;
     margin: 20px;
 `
 

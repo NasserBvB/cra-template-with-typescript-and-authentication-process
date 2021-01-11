@@ -8,7 +8,10 @@ import { useUserState } from "../../../auth/providers";
 import ChangePassword from "../ChangePassword";
 
 const HeadUserWrapper = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: 250px 3fr 100px 100px;
+    grid-template-rows: 1fr;
+    grid-template-areas: "title div1 button1 button2";
     justify-content: space-between;
     align-items: center;
     padding: 5px;
@@ -65,13 +68,12 @@ export default function User() {
     }
     return <>
         <HeadUserWrapper>
-            <h5>Les details de votre profil</h5>
-            <CustomButton disbaled={modifying} handleClick={handleOpen} label="Modifier" />
-            {<CustomButton disbaled={!modifying} handleClick={handleClose} label="Annuler" />}
+            <h5 className="title">Les details de votre profil</h5>
+            <CustomButton disbaled={modifying} handleClick={handleOpen} label="Modifier" className="button1" />
+            <div className="div1"></div>
+            {<CustomButton disbaled={!modifying} handleClick={handleClose} label="Annuler" className="button2" />}
         </HeadUserWrapper>
-        {
-            modifying
-                ? <Formik
+        {<Formik
                     initialValues={{
                         nom: currentUser?.nom,
                         prenom: currentUser?.prenom,
@@ -84,7 +86,9 @@ export default function User() {
                         ({ handleChange, values: { nom, prenom, email, login }, handleSubmit }) => {
                             return (
                                 <Form>
-                                    <ContentFormWrapper>
+                                    {
+                                        modifying
+                                            ? <ContentFormWrapper>
                                         <h4 style={{ textAlign: "center" }} className="title">Informations personnelles </h4>
                                         <CustomField type="text" field="nom" value={nom} className="input1" handleChange={handleChange} label="Nom" />
                                         <CustomField type="text" field="prenom" value={prenom} className="input2" handleChange={handleChange} label="Prenom" />
@@ -93,27 +97,25 @@ export default function User() {
                                         <CustomButton handleSubmit={handleSubmit} label="Valider" className="button1" disbaled={false} />
                                         <Link to="/home" className="div1">
                                         </Link>
-                                    </ContentFormWrapper>
+                                            </ContentFormWrapper> : <ContentUserWrapper>
+                                                Nom complet : <p> {currentUser?.nom} {currentUser?.prenom} </p>
+                Profile : <p> {currentUser?.profil.name} </p>
+                Nom d'utilisateur : <p>{currentUser?.login}</p>
+                Email : <p>{currentUser?.email}</p>
+                                            </ContentUserWrapper>
+                                    }
                                 </Form>
                             )
                         }
                     }
-                </Formik>
-                : <>
-
-                    <ContentUserWrapper>
-                        Nom complet : <p> {currentUser?.nom} {currentUser?.prenom} </p>
-                Profile : <p> {currentUser?.profil.name} </p>
-                Nom d'utilisateur : <p>{currentUser?.login}</p>
-                Email : <p>{currentUser?.email}</p>
-                    </ContentUserWrapper>
-                </>
+        </Formik>
         }
         {/* <ContentUserWrapper> */}
         <HeadUserWrapper>
-            <h5>Changement de mot de passe :</h5>
-            <CustomButton disbaled={modifyingPassword} handleClick={handleOpenPassword} label="Modifier" />
-            {<CustomButton disbaled={!modifyingPassword} handleClick={handleClosePassword} label="Annuler" />}
+            <h5 className="title">Changement de mot de passe :</h5>
+            <div className="div1"></div>
+            <CustomButton className="button1" disbaled={modifyingPassword} handleClick={handleOpenPassword} label="Modifier" />
+            {<CustomButton className="button2" disbaled={!modifyingPassword} handleClick={handleClosePassword} label="Annuler" />}
         </HeadUserWrapper>
         {
             <ChangePassword modifying={modifyingPassword} />

@@ -6,6 +6,10 @@ button {
   cursor: pointer;
 }
 
+form {
+  max-width: inherit;
+}
+
 a {
   text-decoration-line: none;
   color: rgb(11, 131, 11); 
