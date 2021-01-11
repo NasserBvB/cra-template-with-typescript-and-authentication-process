@@ -6,6 +6,7 @@ const ButtonWrapper = styled.button`
     background: linear-gradient(180deg, rgba(34,124,16,1) 6%, rgba(0,255,222,1) 100%);
     padding: 10px;
     min-width: 100px;
+    max-width: 120px;
     border-radius: 10%;
     &:focus, &:hover {
         outline: none;
@@ -14,6 +15,6 @@ const ButtonWrapper = styled.button`
 `
 
 
-export const CustomButton = ({ handleSubmit, label }: { handleSubmit: any, label: string }) => {
-    return <ButtonWrapper onSubmit={handleSubmit} type="submit">{label}</ButtonWrapper>
+export const CustomButton = ({ handleSubmit, label, disbaled, handleClick, className }: { handleSubmit?: any, label: string, disbaled: boolean, handleClick?: any , className?: string}) => {
+    return <ButtonWrapper className={className} onSubmit={handleSubmit} type="submit" disabled={disbaled} onClick={handleClick} >{label}</ButtonWrapper>
 }

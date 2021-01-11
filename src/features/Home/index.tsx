@@ -1,6 +1,7 @@
 import { useUserState } from "../auth/providers";
+import Profil from "./Profil";
 
 export default function Home() {
     const { currentUser } = useUserState();
-    return <h1> Hello {currentUser?.login}</h1>
+    return <Profil />
 }

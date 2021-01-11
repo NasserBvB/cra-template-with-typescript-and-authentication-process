@@ -31,7 +31,7 @@ export const ForgottenPassword = () => {
                             <CustomBox maxHeight={200}>
                                 <h4 style={{ textAlign: "center" }}>Pour recuperer votre compte saisir l'email de recuperation</h4>
                                 <CustomField field="email" value={email} handleChange={handleChange} label="" type="text" />
-                                <CustomButton handleSubmit={handleSubmit} label="Valider" />
+                                <CustomButton handleSubmit={handleSubmit} label="Valider" disbaled={false} />
                                 <p><Link to="/login">Se connecter ?</Link></p>
                             </CustomBox>
                         </Form>

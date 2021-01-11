@@ -3,8 +3,8 @@ import { ISignIn } from "../../interfaces"
 
 const FieldWrapper = styled.div`
 display: grid;
-grid-template-columns: reapeat(3, 1r);
-grid-template-areas: "label ff ff" "input hh hh";
+grid-template-columns: 1fr;
+grid-template-areas: "label ff" "input hh";
 `
 
 const LabelWrapper = styled.label`
@@ -24,11 +24,11 @@ const InputWrapper = styled.input`
     }
 `
 
-export const CustomField = ({ handleChange, label, field, value, type = 'text' }: ISignIn) => {
+export const CustomField = ({ handleChange, label, field, value, type = 'text', className = '', modifying = true }: ISignIn) => {
     return (
-        <FieldWrapper>
+        <FieldWrapper className={className}>
             <LabelWrapper defaultValue="Nasser" htmlFor={field} >{label}</LabelWrapper>
-            <InputWrapper name={field} value={value} onChange={handleChange} type={type}/>
+            <InputWrapper name={field} value={value} onChange={handleChange} type={type} disabled={!modifying} />
         </FieldWrapper>
     )
 }

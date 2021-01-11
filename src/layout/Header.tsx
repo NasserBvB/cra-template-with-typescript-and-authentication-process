@@ -15,8 +15,7 @@ const Wrapper = styled.header`
 const Header = () => {
     const { currentUser } = useUserState()
     return <Wrapper>
-        <Logo src="/////" userName={(currentUser && currentUser.login) || ""} />
-        <Logo src="/////" userName={(currentUser && currentUser.login) || ""} />
+        <Logo src="/////" userName={(currentUser && currentUser.nom) || ""} />
     </Wrapper>
 }
 export default Header;

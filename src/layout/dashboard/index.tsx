@@ -18,8 +18,11 @@ const DashboardLayout: React.FC<{}> = ({ children }) => {
             }, 3000)
         }
     }, [error])
-    return <ContainerWrapper>
-        <HeaderWrapper><Header/></HeaderWrapper>
+    return (
+        <ContainerWrapper>
+            <HeaderWrapper>
+                <Header />
+            </HeaderWrapper>
         <ContentWrapper>
             {!loading ? children : <Loading />}
             <div ref={errorRef} hidden style={{ marginTop: "auto" }}>
@@ -28,9 +31,14 @@ const DashboardLayout: React.FC<{}> = ({ children }) => {
                 </ErrorWrapper>
             </div>
         </ContentWrapper>
-        <MenuWrapper>Menu</MenuWrapper>
-        <FooterWrapper><Footer/></FooterWrapper>
-    </ContainerWrapper>
+            <MenuWrapper>
+                Menu
+            </MenuWrapper>
+            <FooterWrapper>
+                <Footer />
+            </FooterWrapper>
+        </ContainerWrapper>
+    )
 }
 
 export default DashboardLayout;

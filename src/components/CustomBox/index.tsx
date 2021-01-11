@@ -3,10 +3,9 @@ import { ICustomBoxProps } from "../../interfaces"
 
 const BoxWrapper = styled.div`
     background-color: #6666; 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-tempalate-columns: 1fr;
+    justify-content: center;
     border: 1px solid #666;
     -webkit-box-shadow: 13px 11px 11px 0px rgba(153,148,153,1);
     -moz-box-shadow: 13px 11px 11px 0px rgba(153,148,153,1);
@@ -14,7 +13,8 @@ const BoxWrapper = styled.div`
     border-radius: 0% 15% 0% 15%;
     padding: 60px;
     min-height: ${props => props.theme.maxHeight}px;
-    max-width: 300px;
+    max-width: 90%;
+    min-width: 600px;
     margin: 20px;
 `
 

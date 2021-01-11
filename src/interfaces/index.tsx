@@ -80,5 +80,7 @@ export interface ISignIn {
     label: string,
     field: string,
     value: any,
-    type: string
+    type: string,
+    className?: string,
+    modifying?: boolean 
 }
