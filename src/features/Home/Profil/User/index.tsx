@@ -77,7 +77,7 @@ export default function User() {
     }
     return <>
         <HeadUserWrapper>
-            <h5 className="title">Les details de votre profil</h5>
+            <h3 className="title">Les details de votre profil</h3>
             <CustomButton disbaled={modifying} handleClick={handleOpen} label="Modifier" className="button1" />
             <div className="div1"></div>
             {<CustomButton disbaled={!modifying} handleClick={handleClose} label="Annuler" className="button2" />}
@@ -122,7 +122,7 @@ export default function User() {
         }
         {/* <ContentUserWrapper> */}
         <HeadUserWrapper>
-            <h5 className="title">Changement de mot de passe :</h5>
+            <h3 className="title">Changement de mot de passe </h3>
             <div className="div1"></div>
             <CustomButton className="button1" disbaled={modifyingPassword} handleClick={handleOpenPassword} label="Modifier" />
             {<CustomButton className="button2" disbaled={!modifyingPassword} handleClick={handleClosePassword} label="Annuler" />}

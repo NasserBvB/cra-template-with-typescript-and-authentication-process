@@ -13,8 +13,12 @@ const BoxWrapper = styled.div`
     border-radius: 0% 15% 0% 15%;
     padding: 90px;
     min-height: ${props => props.theme.maxHeight}px;
-    max-width: 90%;
-    min-width: 500px;
+    @media screen and (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 100px;
+    }
     margin: 20px;
 `
 

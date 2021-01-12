@@ -64,7 +64,8 @@ export interface ICustomBoxProps {
 export interface IChangePassword {
     oldPassword: string,
     newPassword: string,
-    validatePassword: string
+    validatePassword?: string,
+    id?: number | undefined
 }
 
 export interface IUpdateProfil {

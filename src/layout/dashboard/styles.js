@@ -3,14 +3,14 @@ import styled from 'styled-components'
 export const ContainerWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 60px auto 60px;
+    grid-template-rows: 100px auto 100px;
     min-height: 100vh;
     grid-gap: 6px;
     grid-template-areas: 
         "m h h h h h h h h h h h h h"
         "m c c c c c c c c c c c c c"
         "f f f f f f f f f f f f f f";
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 800px) {
         grid-template-areas: 
         "m m h h h h h h h h h h h h"
         "c c c c c c c c c c c c c c"

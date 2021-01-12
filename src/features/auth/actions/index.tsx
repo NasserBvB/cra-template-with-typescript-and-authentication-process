@@ -66,8 +66,7 @@ export const signIn = async (dispatch: React.Dispatch<{ type: string, data: any 
                 loading: false
             }
         })
-
-        return false;
+        throw new Error(error);
     }
 
     dispatch({
@@ -138,7 +137,7 @@ export const getCurrentUserDetails = async (dispatch: React.Dispatch<{ type: str
             }
         })
 
-        return false;
+        throw new Error(error);
     }
 
     dispatch({
@@ -147,8 +146,6 @@ export const getCurrentUserDetails = async (dispatch: React.Dispatch<{ type: str
             loading: false
         }
     })
-
-    return true;
 }
 
 export const forgottenPassword = async (dispatch: React.Dispatch<{ type: string, data: any }>, values: IForgottenPassword) => {
@@ -208,7 +205,7 @@ export const forgottenPassword = async (dispatch: React.Dispatch<{ type: string,
             }
         })
 
-        return false;
+        throw new Error(error);
     }
 
     dispatch({
@@ -278,8 +275,8 @@ export const changePassword = async (dispatch: React.Dispatch<{ type: string, da
                 loading: false
             }
         })
+        throw new Error(error);
 
-        return false;
     }
 
     dispatch({
@@ -321,8 +318,8 @@ export const logout = async (dispatch: React.Dispatch<{ type: string, data: any 
                 loading: false
             }
         })
+        throw new Error(error);
 
-        return false;
     }
 
     dispatch({

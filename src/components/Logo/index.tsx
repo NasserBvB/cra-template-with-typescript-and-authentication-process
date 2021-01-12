@@ -1,14 +1,19 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
     grid-area: logo;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    max-width: 110px;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "image navigation";
+    max-width: 100px;
+    max-height: 100%;
+    align-content: end;
     cursor: pointer;
-    padding: 30px;
+    padding: 5px;
+    gap: 7px;
+    grid-auto-flow: dense;
 `
 const ImageWrapper = styled.img`
     border-radius: 50%;
@@ -17,11 +22,23 @@ const ImageWrapper = styled.img`
     width: 30px;
     padding: 3px;
 `
-export default function Logo({ userName, src, handleClick }: { userName: string, src: string, handleClick?: any }) {
+
+const TextWrapper = styled.div`
+    display: grid;
+    grid-area: navigation;
+    grid-template-areas: "username username" "profil logout";
+    gap: 4px;
+    align-items: center;
+`
+export default function Logo({ nom, prenom, src, handleClick, className }: { nom: string, prenom: string, src: string, handleClick?: any, className?: string }) {
     return (
-        <Wrapper onClick={handleClick}>
-            <ImageWrapper src="logo192.png" alt={userName} />
-            <p>{userName}</p>
+        <Wrapper className={className}>
+            <ImageWrapper src="logo192.png" alt={nom} className="image" />
+            <TextWrapper className="navigation">
+                <p className="username">{nom} {prenom}</p>
+                <p className="profil"><Link to="/profil" >Details</Link></p>
+                <p className="logout"><Link to="#" onClick={handleClick}> Logout </Link></p>
+            </TextWrapper>
         </Wrapper>
     )
 }

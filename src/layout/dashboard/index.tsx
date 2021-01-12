@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useErrorBoundary } from "use-error-boundary";
 import Loading from "../../components/Loading";
 import { useUserState } from "../../features/auth/providers";
 import Footer from "../Footer";
@@ -10,8 +11,10 @@ const DashboardLayout: React.FC<{}> = ({ children }) => {
     const { loading, error } = useUserState();
     const errorRef: { current: HTMLDivElement | null } = useRef(null);
 
+    const { ErrorBoundary, didCatch, error: catchedError } = useErrorBoundary()
+
     useEffect(() => {
-        if (error && (error.message || error.code)) {
+        if (didCatch && (catchedError.message || catchedError.code)) {
             errorRef.current && errorRef.current.removeAttribute('hidden');
             setTimeout(() => {
                 errorRef.current && errorRef.current.setAttribute('hidden', 'true');
@@ -19,17 +22,18 @@ const DashboardLayout: React.FC<{}> = ({ children }) => {
         }
     }, [error])
     return (
-        <ContainerWrapper>
+        didCatch ? (
+            <ErrorWrapper>
+                <p>An error has been catched: {catchedError.message}</p>
+            </ErrorWrapper>
+        ) :
+            <ErrorBoundary>
+            <ContainerWrapper>
             <HeaderWrapper>
                 <Header />
             </HeaderWrapper>
         <ContentWrapper>
-            {!loading ? children : <Loading />}
-            <div ref={errorRef} hidden style={{ marginTop: "auto" }}>
-                <ErrorWrapper>
-                    {error && error.message}
-                </ErrorWrapper>
-            </div>
+                        {!loading ? children : <Loading />}
         </ContentWrapper>
             <MenuWrapper>
                 Menu
@@ -38,6 +42,7 @@ const DashboardLayout: React.FC<{}> = ({ children }) => {
                 <Footer />
             </FooterWrapper>
         </ContainerWrapper>
+            </ErrorBoundary>
     )
 }
 
