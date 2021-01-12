@@ -20,6 +20,10 @@ export const request = async ({ url, method, body = null }: IRequestFetch) => {
         localStorage.setItem("token", '' + headers.get('authorization'))
     }
 
+    if (headers.get('utilisateur_id')) {
+        localStorage.setItem("utilisateur_id", '' + headers.get('utilisateur_id'))
+    }
+
     // const result = await response.text();
     const result = await response.json();
 
