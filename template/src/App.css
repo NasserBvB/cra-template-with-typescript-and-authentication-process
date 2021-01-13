@@ -1,0 +1,88 @@
+body {
+  color: black;
+}
+
+button {
+  cursor: pointer;
+}
+
+form {
+  max-width: inherit;
+}
+
+a {
+  text-decoration-line: none;
+  color: rgb(11, 131, 11); 
+}
+a:focus, a:hover {
+  text-decoration-line: none;
+  color: rgb(4, 82, 4); 
+}
+
+p {
+  font-size: 13.2px;
+}
+
+.input1 {
+  grid-area: input1;
+  max-width: inherit;
+}
+
+.input2 {
+  grid-area: input2;
+}
+
+.input3 {
+  grid-area: input3;
+}
+
+.input4 {
+  grid-area: input4;
+}
+
+.title {
+  grid-area: title;
+}
+
+.button1 {
+  grid-area: button1;
+}
+
+.div1 {
+  grid-area: div1;
+}
+
+.button2 {
+  grid-area: button2;
+}
+
+.image {
+  grid-area: image;
+  align-content: center;
+  align-self: center;
+}
+
+.username {
+  grid-area: username;
+  text-align: center;
+  margin-bottom: 0;
+  padding: 2px;
+
+}
+
+.navigation {
+  grid-area: navigation;
+}
+
+.profil {
+  grid-area: profil;
+  padding: 2px;
+}
+
+.logout {
+  grid-area: logout;
+}
+
+.logo {
+  grid-area: logo;
+}

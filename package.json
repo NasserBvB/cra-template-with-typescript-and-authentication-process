@@ -1,7 +1,37 @@
 {
-  "name": "pfmustelea-finance",
-  "version": "0.1.0",
-  "private": true,
+  "name": "cra-template-with-typescript-and-authentication-process",
+    "version": "0.0.1",
+    "license": "MIT",
+    "author": "Nasser Setti <abdennasseressati@gmail.com",
+    "private": false,
+    "main": "template.json",
+  "description": "A quick react starter project with typescript and an authentoication module already prepared",
+  "keywords": [
+    "react",
+    "create-react-app",
+    "cra-template",
+    "template",
+    "enzyme",
+    "eslint",
+    "redux",
+    "react-redux",
+    "react-router",
+    "react-router-dom",
+    "typescript",
+    "prettier"
+  ],
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NasserBvB/cra-template-with-typescript-and-authentication-process",
+    "directory": "/"
+  },
+  "bugs": {
+    "url": "https://github.com/NasserBvB/cra-template-with-typescript-and-authentication-process/issues"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
